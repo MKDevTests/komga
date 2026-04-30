@@ -6,6 +6,12 @@
     <v-row>
       <v-col cols="auto">
         <v-select
+          v-model="form.thumbnailFormat"
+          :items="thumbnailFormats"
+          :label="$t('server_settings.label_thumbnail_format')"
+          hide-details
+        />
+        <v-select
           v-model="form.thumbnailSize"
           @change="$v.form.thumbnailSize.$touch()"
           :items="thumbnailSizes"
@@ -195,7 +201,7 @@
 </template>
 
 <script lang="ts">
-import {SettingsDto, ThumbnailSizeDto} from '@/types/komga-settings'
+import {SettingsDto, ThumbnailFormatDto, ThumbnailSizeDto} from '@/types/komga-settings'
 import Vue from 'vue'
 import {helpers, maxValue, minValue, required} from 'vuelidate/lib/validators'
 import ConfirmationDialog from '@/components/dialogs/ConfirmationDialog.vue'
@@ -213,6 +219,7 @@ export default Vue.extend({
       rememberMeDurationDays: 365,
       renewRememberMeKey: false,
       thumbnailSize: ThumbnailSizeDto.DEFAULT,
+      thumbnailFormat: ThumbnailFormatDto.JPEG,
       taskPoolSize: 1,
       serverPort: 25600,
       serverContextPath: '',

@@ -3,6 +3,7 @@ export interface SettingsDto {
   deleteEmptyReadLists: boolean,
   rememberMeDurationDays: number,
   thumbnailSize: ThumbnailSizeDto,
+  thumbnailFormat: ThumbnailFormatDto,
   taskPoolSize: number,
   serverPort: SettingMultiSource<number>,
   serverContextPath: SettingMultiSource<string>,
@@ -23,6 +24,7 @@ export interface SettingsUpdateDto {
   rememberMeDurationDays?: number,
   renewRememberMeKey?: boolean,
   thumbnailSize?: ThumbnailSizeDto,
+  thumbnailFormat?: ThumbnailFormatDto,
   taskPoolSize?: number,
   serverPort?: number,
   serverContextPath?: string,
@@ -36,4 +38,9 @@ export enum ThumbnailSizeDto {
   MEDIUM = 'MEDIUM',
   LARGE = 'LARGE',
   XLARGE = 'XLARGE',
+}
+
+export enum ThumbnailFormatDto {
+  JPEG = 'JPEG',
+  WEBP = 'WEBP',
 }
