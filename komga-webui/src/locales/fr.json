@@ -1001,7 +1001,8 @@
     "label_task_pool_size": "Nombre de threads pour les tâches",
     "label_thumbnail_size": "Taille de vignette",
     "requires_restart": "Nécessite un redémarrage pour prendre effet",
-    "server_settings": "Paramètres du serveur"
+    "server_settings": "Paramètres du serveur",
+    "label_thumbnail_format": "Format des vignettes"
   },
   "settings_user": {
     "change_password": "Modifier le mot de passe",

@@ -1001,7 +1001,8 @@
     "label_task_pool_size": "Task threads",
     "label_thumbnail_size": "Thumbnails size",
     "requires_restart": "Requires restart to take effect",
-    "server_settings": "Server Settings"
+    "server_settings": "Server Settings",
+    "label_thumbnail_format": "Thumbnail format"
   },
   "settings_user": {
     "change_password": "Change password",

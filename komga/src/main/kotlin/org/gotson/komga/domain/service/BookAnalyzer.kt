@@ -47,11 +47,11 @@ class BookAnalyzer(
   private val hasher: Hasher,
   @param:Value("#{@komgaProperties.pageHashing}") private val pageHashing: Int,
   private val komgaSettingsProvider: KomgaSettingsProvider,
-  @Qualifier("thumbnailType")
-  private val thumbnailType: ImageType,
   @Qualifier("pdfImageType")
   private val pdfImageType: ImageType,
 ) {
+  private val thumbnailType: ImageType
+    get() = if (komgaSettingsProvider.thumbnailFormat.name == "WEBP") ImageType.WEBP else ImageType.JPEG
   val divinaExtractors =
     extractors
       .flatMap { e -> e.mediaTypes().map { it to e } }

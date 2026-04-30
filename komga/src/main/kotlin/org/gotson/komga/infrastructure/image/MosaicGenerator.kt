@@ -1,7 +1,6 @@
 package org.gotson.komga.infrastructure.image
 
 import org.gotson.komga.infrastructure.configuration.KomgaSettingsProvider
-import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.stereotype.Service
 import java.awt.image.BufferedImage
 import java.io.ByteArrayOutputStream
@@ -11,11 +10,11 @@ import kotlin.math.roundToInt
 @Service
 class MosaicGenerator(
   private val komgaSettingsProvider: KomgaSettingsProvider,
-  @Qualifier("thumbnailType")
-  private val thumbnailType: ImageType,
   private val imageConverter: ImageConverter,
 ) {
   private val ratio = 0.7066666667
+  private val thumbnailType: ImageType
+    get() = if (komgaSettingsProvider.thumbnailFormat.name == "WEBP") ImageType.WEBP else ImageType.JPEG
 
   fun createMosaic(images: List<ByteArray>): ByteArray {
     val height = komgaSettingsProvider.thumbnailSize.maxEdge
