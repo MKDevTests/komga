@@ -1,6 +1,7 @@
 package org.gotson.komga.infrastructure.configuration
 
 import org.apache.commons.lang3.RandomStringUtils
+import org.gotson.komga.domain.model.ThumbnailFormat
 import org.gotson.komga.domain.model.ThumbnailSize
 import org.gotson.komga.infrastructure.jooq.main.ServerSettingsDao
 import org.springframework.context.ApplicationEventPublisher
@@ -54,6 +55,15 @@ class KomgaSettingsProvider(
     } ?: ThumbnailSize.DEFAULT
     set(value) {
       serverSettingsDao.saveSetting(Settings.THUMBNAIL_SIZE.name, value.name)
+      field = value
+    }
+
+  var thumbnailFormat: ThumbnailFormat =
+    serverSettingsDao.getSettingByKey(Settings.THUMBNAIL_FORMAT.name, String::class.java)?.let {
+      ThumbnailFormat.valueOf(it)
+    } ?: ThumbnailFormat.JPEG
+    set(value) {
+      serverSettingsDao.saveSetting(Settings.THUMBNAIL_FORMAT.name, value.name)
       field = value
     }
 
@@ -120,6 +130,7 @@ private enum class Settings {
   REMEMBER_ME_KEY,
   REMEMBER_ME_DURATION,
   THUMBNAIL_SIZE,
+  THUMBNAIL_FORMAT,
   TASK_POOL_SIZE,
   SERVER_PORT,
   SERVER_CONTEXT_PATH,

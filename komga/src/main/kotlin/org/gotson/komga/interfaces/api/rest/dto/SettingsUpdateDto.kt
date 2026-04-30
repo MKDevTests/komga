@@ -21,6 +21,8 @@ class SettingsUpdateDto {
 
   var thumbnailSize: ThumbnailSizeDto? = null
 
+  var thumbnailFormat: ThumbnailFormatDto? = null
+
   @get:Positive
   var taskPoolSize: Int? = null
 
